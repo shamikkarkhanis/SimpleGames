@@ -1,0 +1,126 @@
+import sys
+import os
+#board setup
+boardC = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+def board():
+  print('     |     |     ')
+  print(' ', boardC[0], ' | ', boardC[1], ' | ', boardC[2])
+  print('_____|_____|_____')
+  print('     |     |     ')
+  print(' ', boardC[3], ' | ', boardC[4], ' | ', boardC[5])
+  print('_____|_____|_____')
+  print('     |     |     ')
+  print(' ', boardC[6], ' | ', boardC[7], ' | ', boardC[8])
+  print('     |     |     ')
+print('\n'*100)
+board()
+print('\n')
+print('To place an "X" or "O" accordingly, select a number on the playing board')
+print('\n')
+#player selection
+while True:
+  player1 = input('Player 1: X or O? ')
+  if player1 == 'X':
+    player2 = 'O'
+    break
+  elif player1 == 'O':
+    player2 = 'X'
+    break
+  else:
+    print('Invalid Input, Try Again!')
+#check winner function
+def checkWinner():
+  if (boardC[0] == player1 and boardC[1] == player1 and boardC[2] == player1) or (boardC[3] == player1 and boardC[4] == player1 and boardC[5] == player1) or (boardC[6] == player1 and boardC[7] == player1 and boardC[8] == player1) or (boardC[0] == player1 and boardC[4] == player1 and boardC[8] == player1) or (boardC[2] == player1 and boardC[4] == player1 and boardC[6] == player1) or (boardC[0] == player1 and boardC[3] == player1 and boardC[6] == player1) or (boardC[1] == player1 and boardC[4] == player1 and boardC[7] == player1) or (boardC[2] == player1 and boardC[5] == player1 and boardC[8] == player1):
+    print('Player 1 Wins!')
+    restart = input('Would you like to restart (y or n)? ')
+    while True:
+      if restart == 'y':
+        print('\n'*100)
+        os.execl(sys.executable, sys.executable, *sys.argv)
+        break
+      elif restart == 'n':
+        sys.exit()
+        break
+      else:
+        print('Invalid Input, Try again!')
+  elif (boardC[0] == player2 and boardC[1] == player2 and boardC[2] == player2) or (boardC[3] == player2 and boardC[4] == player2 and boardC[5] == player2) or (boardC[6] == player2 and boardC[7] == player2 and boardC[8] == player2) or (boardC[0] == player2 and boardC[4] == player2 and boardC[8] == player2) or (boardC[2] == player2 and boardC[4] == player2 and boardC[6] == player2) or (boardC[0] == player2 and boardC[3] == player2 and boardC[6] == player2) or (boardC[1] == player2 and boardC[4] == player2 and boardC[7] == player2) or (boardC[2] == player2 and boardC[5] == player2 and boardC[8] == player2): print('Player 2 Wins!')
+  # Add an else condition for tie
+#place selection
+def selection(num, player):
+  if boardC[num-1] == 'X' or boardC[num-1] == 'O':
+    return False
+  else:
+    if player == 1:
+      boardC[num-1] = player1
+      print('\n'*100)
+      board()
+      print('\n'*3)
+    elif player == 2:
+      boardC[num-1] = player2
+      print('\n'*100)
+      board()
+      print('\n'*3)
+    else: pass
+s1 = int(input('Player 1: Select a spot to place X or O (1-9): '))
+selection(s1, 1)
+while True:
+  s2 = int(input('Player 2: Select a spot to place X or (1-9): '))
+  if selection(s2, 2) ==  False:
+    pass
+  else:
+    selection(s2, 2)
+    break
+while True:
+  s3 = int(input('Player 1: Select a spot to place X or (1-9): '))
+  if selection(s3, 1) ==  False:
+    pass
+  else:
+    selection(s3, 1)
+    break
+while True:
+  s4 = int(input('Player 2: Select a spot to place X or (1-9): '))
+  if selection(s4, 2) ==  False:
+    pass
+  else:
+    selection(s4, 2)
+    break
+while True:
+  s5 = int(input('Player 1: Select a spot to place X or (1-9): '))
+  if selection(s5, 1) ==  False:
+    pass
+  else:
+    selection(s5, 1)
+    break
+checkWinner()
+while True:
+  s6 = int(input('Player 2: Select a spot to place X or (1-9): '))
+  if selection(s6, 2) ==  False:
+    pass
+  else:
+    selection(s6, 2)
+    break
+checkWinner()
+while True:
+  s7 = int(input('Player 1: Select a spot to place X or (1-9): '))
+  if selection(s7, 1) ==  False:
+    pass
+  else:
+    selection(s7, 1)
+    break
+checkWinner()
+while True:
+  s8 = int(input('Player 2: Select a spot to place X or (1-9): '))
+  if selection(s8, 2) ==  False:
+    pass
+  else:
+    selection(s8, 2)
+    break
+checkWinner()
+while True:
+  s9 = int(input('Player 1: Select a spot to place X or (1-9): '))
+  if selection(s9, 1) ==  False:
+    pass
+  else:
+    selection(s9, 1)
+    break
+checkWinner()
